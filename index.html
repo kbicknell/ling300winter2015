@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Linguistics 300: Winter 2015">
+    <meta name="description" content="Linguistics 300: Bayesian inference">
     <meta name="author" content="Klinton Bicknell">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>Linguistics 300: Bayesian inference</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,18 +33,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Ling 300: Bayesian inference</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
@@ -52,30 +43,90 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+	<h1>Bayesian inference [Ling 300]</h1>
+	<h2><a href="http://faculty.wcas.northwestern.edu/kbicknell/">Klinton Bicknell</a> /// Winter 2015</h2>
+        <p>Bayesian techniques provide a rational way of combining probabilistic information, enabling sophisticated analyses of scientific datasets and principled models of cognition and language. This class teaches Bayesian inference, from the ground up.</p>
+        <p><a class="btn btn-primary btn-lg" href="#Schedule" role="button">Schedule</a></p>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div id="schedule" class="col-md-4 anchor">
+	  <h2>Schedule</h2>
+	  <table class="table table-striped resp-table">
+	    <thead>
+	      <tr>
+		<th>Week</th>
+		<th>Date</th>
+		<th>Topic</th>
+		<th>Reading</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+		<td col-label="Week">1</th>
+		<td col-label="Date">Jan 6, 8</td>
+		<td col-label="Topic">Introduction, basic probability theory, <a href="http://www.r-project.org/"R</a></td>
+		<td col-label="Reading">DBDA 1&ndash;4</td>
+	      </tr>
+	      <tr>
+		<td col-label="Week">2</th>
+		<td col-label="Date">Jan 13, 15</td>
+		<td col-label="Topic">More probability theory, Bayes' rule, more R</td>
+		<td col-label="Reading">DBDA 4&ndash;5</td>
+	      </tr>
+	      <tr>
+		<td col-label="Week">3</th>
+		<td col-label="Date">Jan 20, 22</td>
+		<td col-label="Topic">Models for binary outcomes, exact inference in R</td>
+		<td col-label="Reading">DBDA 6</td>
+	      </tr>
+	      <tr>
+		<td col-label="Week">4</th>
+		<td col-label="Date">Jan 27, 29</td>
+		<td col-label="Topic">Markov chain Monte Carlo (MCMC), <a href="http://mcmc-jags.sourceforge.net/">JAGS</a></td>
+		<td col-label="Reading">DBDA 7&ndash;8</td>
+	      </tr>
+	      <tr>
+		<td col-label="Week">5</th>
+		<td col-label="Date">Feb 3, 5</td>
+		<td col-label="Topic">Hierarchical models, <a href="http://mc-stan.org/index.html">Stan</a></td>
+		<td col-label="Reading">DBDA 9&ndash;10, 14</td>
+	      </tr>
+	      <tr>
+		<td col-label="Week">6</th>
+		<td col-label="Date">Feb 10, 12</td>
+		<td col-label="Topic">Gaussians, linear models, mixture models</td>
+		<td col-label="Reading">DBDA 15&ndash;16</td>
+	      </tr>
+	      <tr>
+		<td col-label="Week">7</th>
+		<td col-label="Date">Feb 17, 19</td>
+		<td col-label="Topic">Linear regression with continuous predictors</td>
+		<td col-label="Reading">DBDA 17&ndash;18</td>
+	      </tr>
+	      <tr>
+		<td col-label="Week">8</th>
+		<td col-label="Date">Feb 24, 26</td>
+		<td col-label="Topic">Categorical predictors, logistic regression</td>
+		<td col-label="Reading">DBDA 19&ndash;21</td>
+	      </tr>
+	      <tr>
+		<td col-label="Week">9</th>
+		<td col-label="Date">Mar 3, 5</td>
+		<td col-label="Topic">Computational psycholinguistics, frequentist inference</td>
+		<td col-label="Reading">TBA</td>
+	      </tr>
+	    </tbody>
+	  </table>
         </div>
         <div class="col-md-4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
       </div>
 
       <hr>
