@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,120 +24,151 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
+<body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Ling 300: Bayesian inference</a>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ling 300: Bayesian inference</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+            </div>
+            <!--/.navbar-collapse -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        </div><!--/.navbar-collapse -->
-      </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
-	<h1>Bayesian inference [Ling&nbsp;300]</h1>
-	<h2><a href="http://faculty.wcas.northwestern.edu/kbicknell/">Klinton Bicknell</a> /// Winter 2015</h2>
-        <p>Bayesian techniques provide a rational way of combining probabilistic information, enabling sophisticated analyses of scientific datasets and principled models of cognition and language. This course teaches these techniques from the ground up.</p>
-        <p><a class="btn btn-primary btn-lg" href="#Schedule" role="button">Schedule</a></p>
-      </div>
+        <div class="container">
+            <h1>Bayesian inference [Ling&nbsp;300]</h1>
+            <h2><a href="http://faculty.wcas.northwestern.edu/kbicknell/">Klinton Bicknell</a> /// Winter 2015</h2>
+            <p>Bayesian techniques provide a rational way of combining probabilistic information, enabling sophisticated analyses of scientific datasets and principled models of cognition and language. This course introduces Bayesian techniques from the ground up.</p>
+            <p><a class="btn btn-primary btn-lg" href="#Schedule" role="button">Schedule</a>
+            </p>
+        </div>
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div id="schedule" class="col-md-4 anchor">
-	  <h2>Schedule</h2>
-	  <table class="table table-striped resp-table">
-	    <thead>
-	      <tr>
-		<th>Week</th>
-		<th>Date</th>
-		<th>Topic</th>
-		<th>Reading</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-		<td col-label="Week">1</th>
-		<td col-label="Date">Jan 6, 8</td>
-		<td col-label="Topic">Introduction, basic probability theory, <a href="http://www.r-project.org/">R</a></td>
-		<td col-label="Reading">DBDA 1&ndash;4</td>
-	      </tr>
-	      <tr>
-		<td col-label="Week">2</th>
-		<td col-label="Date">Jan 13, 15</td>
-		<td col-label="Topic">More probability theory, Bayes' rule, more R</td>
-		<td col-label="Reading">DBDA 4&ndash;5</td>
-	      </tr>
-	      <tr>
-		<td col-label="Week">3</th>
-		<td col-label="Date">Jan 20, 22</td>
-		<td col-label="Topic">Models for binary outcomes, exact inference in R</td>
-		<td col-label="Reading">DBDA 6</td>
-	      </tr>
-	      <tr>
-		<td col-label="Week">4</th>
-		<td col-label="Date">Jan 27, 29</td>
-		<td col-label="Topic">Markov chain Monte Carlo (MCMC), <a href="http://mcmc-jags.sourceforge.net/">JAGS</a></td>
-		<td col-label="Reading">DBDA 7&ndash;8</td>
-	      </tr>
-	      <tr>
-		<td col-label="Week">5</th>
-		<td col-label="Date">Feb 3, 5</td>
-		<td col-label="Topic">Hierarchical models, <a href="http://mc-stan.org/index.html">Stan</a></td>
-		<td col-label="Reading">DBDA 9&ndash;10, 14</td>
-	      </tr>
-	      <tr>
-		<td col-label="Week">6</th>
-		<td col-label="Date">Feb 10, 12</td>
-		<td col-label="Topic">Gaussians, linear models, mixture models</td>
-		<td col-label="Reading">DBDA 15&ndash;16</td>
-	      </tr>
-	      <tr>
-		<td col-label="Week">7</th>
-		<td col-label="Date">Feb 17, 19</td>
-		<td col-label="Topic">Linear regression with continuous predictors</td>
-		<td col-label="Reading">DBDA 17&ndash;18</td>
-	      </tr>
-	      <tr>
-		<td col-label="Week">8</th>
-		<td col-label="Date">Feb 24, 26</td>
-		<td col-label="Topic">Categorical predictors, logistic regression</td>
-		<td col-label="Reading">DBDA 19&ndash;21</td>
-	      </tr>
-	      <tr>
-		<td col-label="Week">9</th>
-		<td col-label="Date">Mar 3, 5</td>
-		<td col-label="Topic">Computational psycholinguistics, frequentist inference</td>
-		<td col-label="Reading">TBA</td>
-	      </tr>
-	    </tbody>
-	  </table>
+        <div class="row">
+            <div id="schedule" class="col-md-8">
+                <h2>Schedule</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Date</th>
+                            <th>Topic</th>
+                            <th>Reading</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td col-label="Week">1</td>
+                            <td col-label="Date">Jan 6,&nbsp;8</td>
+                            <td col-label="Topic">Introduction, basic probability theory, <a href="http://www.r-project.org/">R</a>
+                            </td>
+                            <td col-label="Reading">DBDA 1&ndash;4</td>
+                        </tr>
+                        <tr>
+                            <td col-label="Week">2</td>
+                            <td col-label="Date">Jan 13,&nbsp;15</td>
+                            <td col-label="Topic">More probability theory, Bayes' rule, more R</td>
+                            <td col-label="Reading">DBDA 4&ndash;5</td>
+                        </tr>
+                        <tr>
+                            <td col-label="Week">3</td>
+                            <td col-label="Date">Jan 20,&nbsp;22</td>
+                            <td col-label="Topic">Models for binary outcomes, exact inference in R</td>
+                            <td col-label="Reading">DBDA 6</td>
+                        </tr>
+                        <tr>
+                            <td col-label="Week">4</td>
+                            <td col-label="Date">Jan 27,&nbsp;29</td>
+                            <td col-label="Topic">Markov chain Monte Carlo (MCMC), <a href="http://mcmc-jags.sourceforge.net/">JAGS</a>
+                            </td>
+                            <td col-label="Reading">DBDA 7&ndash;8</td>
+                        </tr>
+                        <tr>
+                            <td col-label="Week">5</td>
+                            <td col-label="Date">Feb 3,&nbsp;5</td>
+                            <td col-label="Topic">Hierarchical models, <a href="http://mc-stan.org/index.html">Stan</a>
+                            </td>
+                            <td col-label="Reading">DBDA 9&ndash;10, 14</td>
+                        </tr>
+                        <tr>
+                            <td col-label="Week">6</td>
+                            <td col-label="Date">Feb 10,&nbsp;12</td>
+                            <td col-label="Topic">Gaussians, linear models, mixture models</td>
+                            <td col-label="Reading">DBDA 15&ndash;16</td>
+                        </tr>
+                        <tr>
+                            <td col-label="Week">7</td>
+                            <td col-label="Date">Feb 17,&nbsp;19</td>
+                            <td col-label="Topic">Linear regression with continuous predictors</td>
+                            <td col-label="Reading">DBDA 17&ndash;18</td>
+                        </tr>
+                        <tr>
+                            <td col-label="Week">8</td>
+                            <td col-label="Date">Feb 24,&nbsp;26</td>
+                            <td col-label="Topic">Categorical predictors, logistic regression</td>
+                            <td col-label="Reading">DBDA 19&ndash;21</td>
+                        </tr>
+                        <tr>
+                            <td col-label="Week">9</td>
+                            <td col-label="Date">Mar 3,&nbsp;5</td>
+                            <td col-label="Topic">Computational psycholinguistics, frequentist inference</td>
+                            <td col-label="Reading">TBA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="logistics" class="col-md-4">
+                <h2>Logistics</h2>
+                <dl class="dl-horizontal">
+                    <dt>Instructor</dt>
+                    <dd>Klinton Bicknell</dd>
+
+                    <dt>Time</dt>
+                    <dd>Tuesdays &amp; Thursdays 2&ndash;3:30</dd>
+
+                    <dt>Location</dt>
+                    <dd>Tuesdays in <a href="http://maps.northwestern.edu/facility/128">Cresap</a> 101; Thursdays in <a href="http://maps.northwestern.edu/facility/123">University Library</a> B182</dd>
+
+                    <dt>Required textbook</dt>
+                    <dd><em><a
+            href="https://sites.google.com/site/doingbayesiandataanalysis/">Doing
+              Bayesian Data Analysis,
+              <strong>Second Edition</strong></a></em>
+                        (2014) by John Kruschke [DBDA]
+                    </dd>
+                </dl>
+            </div>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-      </div>
+        <!-- /row -->
+        <div class="row">
+            <div id="requirements" class="col-md-6">
+                <h2>Requirements</h2>
+                <dl class="dl-horizontal">
+                    <dt>Instructor</dt>
+                    <dd>Klinton Bicknell</dd>
+                </dl>
+            </div>
+        </div>
+        <!-- /row -->
 
-      <hr>
+        <hr>
 
-      <footer>
-      </footer>
-    </div> <!-- /container -->
+        <footer>
+        </footer>
+    </div>
+    <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -146,5 +178,6 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+</body>
+
 </html>
