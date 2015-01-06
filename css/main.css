@@ -21,3 +21,8 @@ h6,
 .h6 {
     font-family: "Minion Pro", Times, "Times New Roman", serif;
 }
+
+/* fix bootstrap static navbar spacing */
+.navbar {
+    margin-bottom: 0;
+}
