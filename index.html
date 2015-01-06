@@ -41,8 +41,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                <li><a href="#schedule">Schedule</a></li>
-                
+                    <li><a href="#schedule">Schedule</a>
+                    </li>
+
                 </ul>
             </div>
             <!--/.navbar-collapse -->
@@ -54,86 +55,106 @@
             <h1>Bayesian inference [Ling&nbsp;300]</h1>
             <h2><a href="http://faculty.wcas.northwestern.edu/kbicknell/">Klinton Bicknell</a> /// Winter 2015</h2>
             <p>Bayesian techniques provide a rational way of combining probabilistic information, enabling sophisticated analyses of scientific datasets and principled models of action under uncertainty. This course introduces Bayesian techniques from the ground up.</p>
-            <p><a class="btn btn-primary btn-lg" href="#schedule" role="button">Schedule</a>
+            <p>
+                <a class="btn btn-primary btn-lg" href="#schedule" role="button">Schedule</a>
+                <a class="btn btn-primary btn-lg" href="https://piazza.com/class/i45mco6h4gq53f" role="button">Piazza forum</a>
             </p>
+
         </div>
     </div>
 
     <div class="container">
+        <section id="schedule">
+            <h2>Schedule</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Date</th>
+                        <th>Topic</th>
+                        <th>Reading</th>
+                        <th>Assignments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Jan 6,&nbsp;8</td>
+                        <td>Introduction, basic probability theory, <a href="http://www.r-project.org/">R</a>
+                        </td>
+                        <td>DBDA 1&ndash;4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jan 13,&nbsp;15</td>
+                        <td>More probability theory, Bayes' rule, more R</td>
+                        <td>DBDA 4&ndash;5</td>
+                        <td>HW1 out Jan 13</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Jan 20,&nbsp;22</td>
+                        <td>Models for binary outcomes, exact inference</td>
+                        <td>DBDA 6</td>
+                        <td>HW1 due Jan 20</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Jan 27,&nbsp;29</td>
+                        <td>Markov chain Monte Carlo (MCMC), <a href="http://mcmc-jags.sourceforge.net/">JAGS</a>
+                        </td>
+                        <td>DBDA 7&ndash;8</td>
+                        <td>HW2 out Jan 27</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Feb 3,&nbsp;5</td>
+                        <td>Hierarchical models, <a href="http://mc-stan.org/index.html">Stan</a>
+                        </td>
+                        <td>DBDA 9&ndash;10, 14</td>
+                        <td>HW2 due Feb 3</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Feb 10,&nbsp;12</td>
+                        <td>Gaussians, linear models, mixture models</td>
+                        <td>DBDA 15&ndash;16</td>
+                        <td>HW3 out Feb 10; Project proposal due Feb 13</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Feb 17,&nbsp;19</td>
+                        <td>Linear regression with continuous predictors</td>
+                        <td>DBDA 17&ndash;18</td>
+                        <td>HW3 due Feb 17</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Feb 24,&nbsp;26</td>
+                        <td>Categorical predictors, logistic regression</td>
+                        <td>DBDA 19&ndash;21</td>
+                        <td>HW4 out Feb 24</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Mar 3,&nbsp;5</td>
+                        <td>Computational psycholinguistics, frequentist inference</td>
+                        <td>TBA</td>
+                        <td>HW4 due Mar 5</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Mar 16</td>
+                        <td></td>
+                        <td></td>
+                        <td>Final project papers due 5pm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
         <div class="row">
-            <div id="schedule" class="col-md-8">
-                <h2>Schedule</h2>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Week</th>
-                            <th>Date</th>
-                            <th>Topic</th>
-                            <th>Reading</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Jan 6,&nbsp;8</td>
-                            <td>Introduction, basic probability theory, <a href="http://www.r-project.org/">R</a>
-                            </td>
-                            <td>DBDA 1&ndash;4</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jan 13,&nbsp;15</td>
-                            <td>More probability theory, Bayes' rule, more R</td>
-                            <td>DBDA 4&ndash;5</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Jan 20,&nbsp;22</td>
-                            <td>Models for binary outcomes, exact inference in R</td>
-                            <td>DBDA 6</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Jan 27,&nbsp;29</td>
-                            <td>Markov chain Monte Carlo (MCMC), <a href="http://mcmc-jags.sourceforge.net/">JAGS</a>
-                            </td>
-                            <td>DBDA 7&ndash;8</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Feb 3,&nbsp;5</td>
-                            <td>Hierarchical models, <a href="http://mc-stan.org/index.html">Stan</a>
-                            </td>
-                            <td>DBDA 9&ndash;10, 14</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Feb 10,&nbsp;12</td>
-                            <td>Gaussians, linear models, mixture models</td>
-                            <td>DBDA 15&ndash;16</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Feb 17,&nbsp;19</td>
-                            <td>Linear regression with continuous predictors</td>
-                            <td>DBDA 17&ndash;18</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Feb 24,&nbsp;26</td>
-                            <td>Categorical predictors, logistic regression</td>
-                            <td>DBDA 19&ndash;21</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>Mar 3,&nbsp;5</td>
-                            <td>Computational psycholinguistics, frequentist inference</td>
-                            <td>TBA</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id="logistics" class="col-md-4">
+            <div id="logistics" class="col-md-6">
                 <h2>Logistics</h2>
                 <h3>Course</h3>
                 <dl class="dl-horizontal">
@@ -162,29 +183,33 @@
 
                     <dt>Office</dt>
                     <dd><a href="http://maps.northwestern.edu/?lookupid=162">Linguistics [2016 Sheridan Road]</a> 107</dd>
-
-                    <dt>Email</dt>
-                    <dd>See <a href="">Contact</a> under Policies</dd>
                 </dl>
             </div>
-        </div>
-        <!-- /row -->
-        <div class="row">
             <div id="policies" class="col-md-6">
                 <h2>Policies</h2>
                 <dl class="dl-horizontal">
-                    <dt>Contact</dt>
-                    <dd>Questions that are not personal should be posted on the <a href="">Piazza forum</a> (where they can be posted anonymously if desired). To contact the instructor directly, coming to office hours is strongly encouraged. For questions that are personal, students can email the instructor at <a href="mailto:kbicknell@northwestern.edu">kbicknell@northwestern.edu</a>.</dd>
+                    <dt>Email</dt>
+                    <dd>Questions that are not personal should be posted on the <a href="">Piazza forum</a> (where they can be posted anonymously if desired). To contact the instructor directly, coming to office hours is encouraged. For questions that are personal, students can email the instructor at <a href="mailto:kbicknell@northwestern.edu">kbicknell@northwestern.edu</a>.</dd>
 
                     <dt>Description</dt>
                     <dd>Hands-on introduction to probability theory, structured probabilistic models, and Bayesian inference, in order to prepare students both to be able to perform sophisticated analyses of data and to construct and evaluate formal computational models instantiating scientific theories, all in the context of the study of language. Students will also learn to use the R language for statistical computing.</dd>
-
                 </dl>
 
                 <h3>Requirements</h3>
                 <dl class="dl-horiztonal">
+                    <dt>Course Grade</dt>
+                    <dd>
+                        <ul class="list-unstyled">
+                            <li>70% homeworks (4)</li>
+                            <li>30% final project</li>
+                        </ul>
+                    </dd>
 
+                    <dt>Homeworks</dt>
+                    <dd>There will be four homework assignments throughout the quarter. These assignments will involve a combination of programming exercises and short answer responses. Working together in pairs or small groups when discussing the assignments is encouraged, but each student must code and write up their own homework independently. In addition, students must list on each assignment all students they discussed the assignment with. Homework must be handed in through <a href="https://canvas.northwestern.edu">Canvas</a>.</dd>
 
+                    <dt>Final project</dt>
+                    <dd>Students will complete a final project on a topic related to the course content. There are two possible types of final projects. In one type, the project will involve an in-depth statistical analysis of a dataset using Bayesian techniques. In the other type, the project will involve designing and implementing a probabilistic Bayesian model of a probabilistic inference problem facing some agent (for example, an aspect of language processing or acquisition) and using techniques from the class to determine some of the model's predictions. These projects should be completed in pairs or individually. Students will write short project proposals by the end of week 6, and then a final paper on the project will be due on the first day of finals week.</dd>
                 </dl>
             </div>
         </div>
