@@ -21,6 +21,15 @@ Probability theory
 Data summarization and plotting in R
 ------------------------------------
 
+For this part of the homework, you'll be making use of a data file called `schilling_ling300.txt`, also available from the course website. This file was constructed from a freely available dataset of eye movements in reading called the Schilling corpus (Schilling, Rayner, & Chumbley, 1998). This corpus was created when participants read a number of short sentences while their eyes were being tracked. The file I've provided you with describes, for a number of words and for each of 9 subjects, three binary eye movement measures that relate to ongoing language processing:
+
+* whether the subject _skipped_ that word, which means not directly fixating the word before fixating words past it
+* whether the subject made _multiple fixations_ on the word prior to moving the eyes to words past it
+* whether the subject made a _regression_ on the word, which means moving the eyes backwards to previous words, prior to moving the eyes past it
+
+In general, words that take less time to process are associated with more _skipping_, and words that take longer to process are associated with more instances of _multiple fixations_ and more _regressions_. For the purposes of this homework, we'll be looking at the relationships between these three eye movement measures and one measure of how long it takes to process a word: its length in characters. On average, words that are longer take longer to process, so the expectation is that as length increases, words will be associated with less skipping, more instances of multiple fixations, and more regressions.
+
+
 ```{r}
 summary(cars)
 ```
