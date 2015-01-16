@@ -100,6 +100,11 @@ img {
 </ul></li>
 <li>Looking just at the first 10 lines of this file (so the first 9 lines of data, since row 1 is the header), what range of word lengths does it seem that this dataset is investigating? Also, looking at these rows of data, which outcome seems to be least likely: skipping a word, fixating a word multiple times, or launching a regression from a word?</li>
 </ul></li>
+<li><em>Loading data.</em> Now, create a new R script called <code>hw1.R</code>, which you’ll be modifying in the rest of this homework. As you develop this script, remember to add comments beginning with the character whenever you think it would be useful if you wanted to read this script again in a month or two. The first thing you’ll add to the script is a line to read the data file <code>schilling_ling300.txt</code> into R. Before you can do this, remember that you’ll need to change the working directory to match the directory that the data file is in. To load the data, you’ll need to choose the appropriate function in the <code>read.table()</code> family (i.e., <code>read.table()</code>, <code>read.csv()</code>, <code>read.delim()</code>, <code>read.csv2()</code>, or <code>read.delim2()</code>) and pass it the appropriate arguments. Look at the help for <code>read.table</code> by typing <code>?read.table</code> and pushing enter to see the available options. Remember that the most relevant arguments are whether or not the file has a header and what character is used to separate the columns. In case you haven’t seen it before, <code>'\t'</code> is a common representation in computer programming languages for the tab character in a string. Assign the result of this function to a new variable called <code>dat</code>.
+<ul>
+<li>What type of object does <code>dat</code> now store? (Hint: what type of object do the <code>read.table()</code> family of functions return?)</li>
+<li>Use the <code>summary()</code> function on the new variable <code>dat</code> to summarize the data in each of its columns. Of the vector types we discussed in class (<code>logical</code>, <code>numeric</code>, <code>boolean</code>, <code>factor</code>), what type is each of the six columns?</li>
+</ul></li>
 </ol>
 <pre class="r"><code>summary(cars)</code></pre>
 <pre><code>##      speed           dist       
