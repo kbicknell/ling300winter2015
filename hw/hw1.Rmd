@@ -1,13 +1,25 @@
 ---
 title: 'Ling 300: Homework 1'
 author: "Klinton Bicknell"
-date: "December 26, 2014"
+date: "Due: January 22, 2015"
 output: html_document
 ---
 
-1. This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This homework assignment has two parts. The first part tests your understanding of some basic concepts in probability theory and is short answer. The second part requires programming in R, and requires turning in a script you'll create, in addition to answering some short answer questions.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Probability theory
+------------------
+
+1. *Probability mass.* Say we have a probability mass function $p(x)$ that puts probability on just three outcomes: 1, 3, and 5. We know that $p(1) = 0.4$, and we know that $p(3) = p(5)$. What must $p(3)$ and $p(5)$ be? Why?
+
+2. *Probability density.* Say we have a uniform distribution on the range from 3.0 to 3.1. This distribution, like all uniform distributions, has the same probability density $p(x)$ at every point $x$ within its range $[3.0, 3.1]$. What is the probability density $p(x)$ at each of these points? Why do you know this? Is it a problem that this probability density is greater than 1? Why or why not?
+
+3. *Bernoulli trial distribution.* We often say that the Bernoulli trial has a single parameter, the probability of a 'success', often denoted $\pi$. In terms of $\pi$, what is the probability of a failure? Why?
+
+4. *Mean and variance.* Say we have a multinomial trial distribution $p(x)$ over three outcomes 1, 2, and 4, where $p(1) = 0.3$, $p(2) = 0.4$, and $p(4) = 0.3$. What is the expectation or mean of this distribution? What is the variance? What is the standard deviation? (show how you got these results)
+
+Data summarization and plotting in R
+------------------------------------
 
 ```{r}
 summary(cars)
