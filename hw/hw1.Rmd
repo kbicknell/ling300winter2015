@@ -29,6 +29,15 @@ For this part of the homework, you'll be making use of a data file called `schil
 
 In general, words that take less time to process are associated with more _skipping_, and words that take longer to process are associated with more instances of _multiple fixations_ and more _regressions_. For the purposes of this homework, we'll be looking at the relationships between these three eye movement measures and one measure of how long it takes to process a word: its length in characters. On average, words that are longer take longer to process, so the expectation is that as length increases, words will be associated with less skipping, more instances of multiple fixations, and more regressions.
 
+5. *Getting to know the dataset without R.* For text-encoded datasets such as this one (and the one we used in class), it's usually a good idea to look at the dataset in a text editor of some sort before loading it into R. This can help you decide which commands and options to use to load the dataset. If you're comfortable on a *nix-style terminal, using the `head` command is a great way to look at a dataset. If not, just open this file in your favorite text editor, or just open this file in RStudio with File -> Open File... to look at it. (Make sure not to accidentally save any changes to the file.)
+    + You'll notice that the file has 6 columns, separated by a tab. Each column has a name, given in the first row (*header row*):
+        * _subj_. subject number, uniquely identifying participants
+        * _word_. word number, in the form [sentence number]_[word number in sentence]
+        * _wlen_. length of word, in characters
+        * _skip_. a 1 if the word was skipped by this subject and 0 otherwise
+        * _mfix_. a 1 if the word was fixated multiple times by this subject and 0 otherwise
+        * _fp.reg_. a 1 if a regression was launched from this word back to a previous word by this subject, and a 0 otherwise. If a word was skipped, the value for fp.reg is NA, since if the reader did not fixate the word, they had no opportunity to launch a regression from it
+    + Looking just at the first 10 lines of this file (so the first 9 lines of data, since row 1 is the header), what range of word lengths does it seem that this dataset is investigating? Also, looking at these rows of data, which outcome seems to be least likely: skipping a word, fixating a word multiple times, or launching a regression from a word?
 
 ```{r}
 summary(cars)
