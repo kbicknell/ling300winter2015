@@ -21,7 +21,7 @@ Probability theory
 Data summarization and plotting in R
 ------------------------------------
 
-For this part of the homework, you'll be making use of a data file called `schilling_ling300.txt`, also available from the course website. This file was constructed from a freely available dataset of eye movements in reading called the Schilling corpus (Schilling, Rayner, & Chumbley, 1998). This corpus was created when participants read a number of short sentences while their eyes were being tracked. The file I've provided you with describes, for a number of words and for each of 9 subjects, three binary eye movement measures that relate to ongoing language processing:
+For this part of the homework, you'll be making use of a data file called `schilling_ling300.txt`, [download here](schilling_ling300.txt). This file was constructed from a freely available dataset of eye movements in reading called the Schilling corpus (Schilling, Rayner, & Chumbley, 1998). This corpus was created when participants read a number of short sentences while their eyes were being tracked. The file I've provided you with describes, for a number of words and for each of 9 subjects, three binary eye movement measures that relate to ongoing language processing:
 
 * whether the subject _skipped_ that word, which means not directly fixating the word before fixating words past it
 * whether the subject made _multiple fixations_ on the word prior to moving the eyes to words past it
