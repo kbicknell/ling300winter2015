@@ -40,17 +40,19 @@ In general, words that take less time to process are associated with more _skipp
     + Looking just at the first 10 lines of this file (so the first 9 lines of data, since row 1 is the header), what range of word lengths does it seem that this dataset is investigating? Also, looking at these rows of data, which outcome seems to be least likely: skipping a word, fixating a word multiple times, or launching a regression from a word?
 
 6. *Loading data.* Now, create a new R script called `hw1.R`, which you'll be modifying in the rest of this homework. As you develop this script, remember to add comments beginning with the `r #` character whenever you think it would be useful if you wanted to read this script again in a month or two. The first thing you'll add to the script is a line to read the data file `schilling_ling300.txt` into R. Before you can do this, remember that you'll need to change the working directory to match the directory that the data file is in. To load the data, you'll need to choose the appropriate function in the `read.table()` family (i.e., `read.table()`, `read.csv()`, `read.delim()`, `read.csv2()`, or `read.delim2()`) and pass it the appropriate arguments. Look at the help for `read.table` by typing `?read.table` and pushing enter to see the available options. Remember that the most relevant arguments are whether or not the file has a header and what character is used to separate the columns. In case you haven't seen it before, `'\t'` is a common representation in computer programming languages for the tab character in a string. Assign the result of this function to a new variable called `dat`.
-    + What type of object does `dat` now store? (Hint: what type of object do the `read.table()` family of functions return?)
+    + What type of object does `dat` now store? (Hint: Think what type of object the `read.table()` family of functions return.)
     + Use the `summary()` function on the new variable `dat` to summarize the data in each of its columns. Of the vector types we discussed in class (`logical`, `numeric`, `boolean`, `factor`), what type is each of the six columns?
 
-```{r}
-summary(cars)
-```
-
-2. You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+7. After loading data into R, one common task is changing the type of some of its columns into ones that represent them more explicitly. For example, three of the columns of `dat` (`skip`, `mfix`, and `fp.reg`) are represented as numbers (0s and 1s), but in actuality represent a logical value that is either true or false. It is often a good idea to convert these variables into formal `logical` vectors to make this explicit, so this is what you'll do next. Since this is something that we'll want to do to all three of these columns, this is a good candidate for creating a function (so that we don't need to copy and paste code).
+    + Define a new function called `to_logical` that takes a single vector argument that is 0s and 1s (and possibly NAs) and returns its corresponding single `logical` vector of `TRUE`s and `FALSE`s (and possibly NAs).
+    + At the beginning of the function, check to ensure that the input meets the function's assumptions, and emit an error if not. As in class, this can be done by combining an `if` statement with a `stop()` function call in the following form:
+        ```{r}
+        if (FALSE) {
+          stop("Error message")
+        }
+        ```
+        * You'll need to replace the `FALSE` in the conditional statement above with an appropriate test of whether every element in the vector is 0, 1, or `NA`. Testing whether each element in the vector is equal to 1 can be done with the `==` operator, and similarly for 0. Testing whether each element in a vector is `NA`, however, requires a special function `is.na()`. Thus, you can create three logical vectors that denote whether each element is 0, 1, or `NA`. Then, you can put these together with the logical-or operator `|`, to produce one vector that tells whether each element of the input vector is either 0, 1, or `NA`. Finally, to collapse this vector into a single vector that specifies whether all of the elements of the vector are `TRUE`, you can use the `all()` function. Note: you're likely to also want to use the logical-not operator `!` to perform the test you want.
+        * You'll also need to replace `"Error message"` with something more informative about the error.
+    + Once the checking is complete of whether the input meets the function's assumptions, the next step is to code the body of the function, which transforms 1 to `TRUE`, 0 to `FALSE`, and leaves `NA` as `NA`. For this step we can assume that those are the only three possible inputs (thanks to the checking we've already implemented). There are two ways to achieve this goal. One is to use the `ifelse()` function (see `?ifelse`), which can check whether each element meets a certain condition (say, being 1), and if so, specifies one resulting value (say, `TRUE`), and if not, another resulting value (say, `FALSE`). (The `ifelse()` function, like most elementwise functions in R, leaves `NA` values as `NA`.) A more direct approach is simply to use the logical operator `==`, which returns `TRUE`s and `FALSE`s (and also leaves `NA` values as `NA`).
+    + Test your resulting function, call it with the argument `c(0, 1, 1, NA, 0, 1)` to see whether it returns `c(FALSE, TRUE, TRUE, NA, FALSE, TRUE)`.
+    + Finally, use this function to transform the three binary columns of `dat`. Using `mutate()` in the `dplyr` package, transform the `mfix`, `skip`, and `fp.reg` columns into logical vectors using your new `to_logical()` function.
