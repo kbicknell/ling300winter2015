@@ -70,8 +70,16 @@ Visualization, functions, and conjugate Bayes in R
 
     + Try a range of different $\alpha$ and $\beta$s, where $\alpha > \beta$ and $\alpha < 1$ and $\beta < 1$. What do these all look like? What happens as $\beta$ decreases? What happens as $\alpha$ decreases?
 
-10. *Summarizing beta distributions.* [Watch this space]
+10. *Summarizing beta distributions: part 1.* In this homework, you'll be performing conjugate inference in a Beta-binomial model, where we'll end up with posterior Beta distributions that we'll want to summarize. Two ways of summarizing distributions that we discussed in class are (a) calculating the distribution's mean and (b) calculating a 95% central probability interval. For this problem, you'll create functions to do both for a Beta distribution.
 
-11. *Calculating posterior betas.* [Watch this space]
+    Create a function `beta_mean()` that takes as input two parameters `alpha` and `beta`, and returns the mean of the Beta distribution with those parameters. As always, make sure to initially check that the input parameters meet the function's assumptions (that they're both greater than zero, as is required by the Beta distribution.)
+    
+    Recall that the formula for the mean of the Beta distribution is $\dfrac{\alpha}{\alpha + \beta}$. For this function, and all other functions in this homework, make sure to test your function to make sure it returns the right thing, and complains about the input when it should.
+    
+11. *Summarizing beta distributions: part 2.* Create a function `beta_central_interval()` that takes as its first two parameters `alpha` and `beta`, and as its third parameter `size`, the size of the interval expressed as a probability (e.g., 0.90 for a 90% probability interval), and returns a two-element vector representing the endpoints of a central probability interval. Use a default argument of 0.95 for `size`. The function should check to make sure `alpha` and `beta` satisfy the Beta distribution's requirements (as above) and also ensure that `size` is strictly between 0 and 1 exclusize ($0 < \mbox{size} < 1$).
+    
+    Recall that a 90% central interval can be constructed from a distribution's cumulative distribution function by using the point at which 5 percent of the probability mass is below it as the lower bound and the point at which 5 percent of the proability mass is above it as the upper bound. Note that when doing this, we are essentially inverting the cumulative distribution function, which usually takes as input a point $x$ and outputs the probability mass that is below $x$, to produce a function that takes as input a probability $p$ and outputs the point $x$ at which that much probability mass is below. This inverted function is called the _quantile_ function, and is implemented in R for many common distributions, including the Beta distribution. Specifically, the `qbeta()` function in R takes as input the probability $p$, and the two parameters of the Beta distribution $\alpha$ and $\beta$, but refers to these as `shape1` and `shape2`. Thus, to get the point in a Beta(2, 1) at which 5% of the probability mass is below, one would call `qbeta(0.05, 2, 1)`.
 
-12. *Putting it all together: plotting Beta binomial posteriors.* [Watch this space]
+12. *Calculating posterior betas.* [Watch this space]
+
+13. *Putting it all together: plotting Beta binomial posteriors.* [Watch this space]
