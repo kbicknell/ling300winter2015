@@ -112,6 +112,22 @@ img {
 </div>
 <div id="visualization-functions-and-conjugate-bayes-in-r" class="section level2">
 <h2>Visualization, functions, and conjugate Bayes in R</h2>
+<ol start="9" style="list-style-type: decimal">
+<li><em>Beta distributions.</em> As we discussed in class, the Beta distribution is a very widely used conjugate prior for the binomial parameter <span class="math">\(\pi\)</span>. It’s important to have a good intuition for what parameter combinations give the Beta distribution its shapes. The following code defines a function to let us view Beta distributions with <code>ggplot2</code>.</li>
+</ol>
+<pre class="r"><code>plot_beta &lt;- function(alpha, beta) {
+  dat_dummy &lt;- data.frame(x = seq(0, 1, len = 100))
+  ggplot(dat_dummy, aes(x = x, y = ..y..)) +
+    stat_function(fun = dbeta, args = list(shape1 = alpha, shape2 = beta))
+}</code></pre>
+<p>Specifically, this function will show the probability density function for a Beta distribution with parameters shape1 and shape2 (which correspond to <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> we discussed in class). Just paste this function definition into your script, and then you can use it to get a sense of the Beta distribution.</p>
+<ul>
+<li><p>Try a range of different <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span>s, where <span class="math">\(\alpha = \beta\)</span> and <span class="math">\(\alpha &gt; 1\)</span> and <span class="math">\(\beta &gt; 1\)</span>. Where is the probability for all these distributions peaked? Why does this make sense if we think of <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> as pseudocounts? What happens to these distributions as <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> increase?</p></li>
+<li><p>Try a range of different <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span>s, where <span class="math">\(\alpha = \beta\)</span> and <span class="math">\(\alpha &lt; 1\)</span> and <span class="math">\(\beta &lt; 1\)</span>. Where is the probability for all these distributions peaked? What happens as <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> get closer to 1? What happens as <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> get closer to 0?</p></li>
+<li><p>Try a range of different <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span>s, where <span class="math">\(\alpha = 3\beta\)</span> and <span class="math">\(\alpha &gt; 1\)</span> and <span class="math">\(\beta &gt; 1\)</span>. Where is the probability for all these distributions peaked? Why does this make sense if we think of <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> as pseudocounts? What happens to these distributions as <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> increase?</p></li>
+<li><p>Try a range of different <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span>s, where <span class="math">\(\alpha &gt; 1\)</span> and <span class="math">\(\beta &lt; 1\)</span>. What do these all look like? What happens as <span class="math">\(\alpha\)</span> increases? What happens as <span class="math">\(\beta\)</span> decreases?</p></li>
+<li><p>Try a range of different <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span>s, where <span class="math">\(\alpha &gt; \beta\)</span> and <span class="math">\(\alpha &lt; 1\)</span> and <span class="math">\(\beta &lt; 1\)</span>. What do these all look like? What happens as <span class="math">\(\beta\)</span> decreases? What happens as <span class="math">\(\alpha\)</span> decreases?</p></li>
+</ul>
 <p>[Watch this space]</p>
 </div>
 

@@ -50,4 +50,24 @@ $p(C = \mbox{that}\ |\ N =\mbox{full}) = 0.7$
 Visualization, functions, and conjugate Bayes in R
 --------------------------------------------------
 
+9. *Beta distributions.* As we discussed in class, the Beta distribution is a very widely used conjugate prior for the binomial parameter $\pi$. It's important to have a good intuition for what parameter combinations give the Beta distribution its shapes. The following code defines a function to let us view Beta distributions with `ggplot2`.
+```{r}
+plot_beta <- function(alpha, beta) {
+  dat_dummy <- data.frame(x = seq(0, 1, len = 100))
+  ggplot(dat_dummy, aes(x = x, y = ..y..)) +
+    stat_function(fun = dbeta, args = list(shape1 = alpha, shape2 = beta))
+}
+```
+Specifically, this function will show the probability density function for a Beta distribution with parameters shape1 and shape2 (which correspond to $\alpha$ and $\beta$ we discussed in class). Just paste this function definition into your script, and then you can use it to get a sense of the Beta distribution.
+
+* Try a range of different $\alpha$ and $\beta$s, where $\alpha = \beta$ and $\alpha > 1$ and $\beta > 1$. Where is the probability for all these distributions peaked? Why does this make sense if we think of $\alpha$ and $\beta$ as pseudocounts? What happens to these distributions as $\alpha$ and $\beta$ increase?
+
+* Try a range of different $\alpha$ and $\beta$s, where $\alpha = \beta$ and $\alpha < 1$ and $\beta < 1$. Where is the probability for all these distributions peaked? What happens as $\alpha$ and $\beta$ get closer to 1? What happens as $\alpha$ and $\beta$ get closer to 0?
+
+* Try a range of different $\alpha$ and $\beta$s, where $\alpha = 3\beta$ and $\alpha > 1$ and $\beta > 1$. Where is the probability for all these distributions peaked? Why does this make sense if we think of $\alpha$ and $\beta$ as pseudocounts? What happens to these distributions as $\alpha$ and $\beta$ increase?
+
+* Try a range of different $\alpha$ and $\beta$s, where $\alpha > 1$ and $\beta < 1$. What do these all look like? What happens as $\alpha$ increases? What happens as $\beta$ decreases?
+
+* Try a range of different $\alpha$ and $\beta$s, where $\alpha > \beta$ and $\alpha < 1$ and $\beta < 1$. What do these all look like? What happens as $\beta$ decreases? What happens as $\alpha$ decreases?
+
 [Watch this space]
