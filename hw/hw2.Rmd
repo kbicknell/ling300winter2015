@@ -70,4 +70,8 @@ Specifically, this function will show the probability density function for a Bet
 
 * Try a range of different $\alpha$ and $\beta$s, where $\alpha > \beta$ and $\alpha < 1$ and $\beta < 1$. What do these all look like? What happens as $\beta$ decreases? What happens as $\alpha$ decreases?
 
-[Watch this space]
+10. *Summarizing beta distributions.* [Watch this space]
+
+11. *Calculating posterior betas.* [Watch this space]
+
+12. *Putting it all together: plotting Beta binomial posteriors.* [Watch this space]
