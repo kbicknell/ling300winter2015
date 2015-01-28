@@ -1,0 +1,53 @@
+---
+title: 'Ling 300: Homework 2'
+author: "Klinton Bicknell"
+date: "Due: February 3, 2015"
+output: html_document
+---
+
+This homework assignment has two parts. The first part tests your understanding of some basic concepts in probability theory and is short answer. The second part requires programming in R, and requires turning in a script you'll create, in addition to answering some short answer questions.
+
+Probability theory
+------------------
+
+*Working with joint probabilities.* For problems 1--3, imagine that a researcher is interested in how the choice to refer to a noun with the definite article 'the' versus the indefinite article 'a' may depend on the formality of the noun. To test this, they're looking in particular at two nouns that differ in formality but have very similar meanings: 'couch' and 'sofa'. Imagine that they used a very large corpus to determine the joint distribution on what each noun phrase containing 'couch'/'sofa' and an article 'a'/'the' will be. Let the variable $A$ represent whether the noun phrase uses 'a' (1) or 'the' (0), and let the variable $C$ represent whether the noun phrase uses 'couch' (1) or 'sofa' (0). For the purposes of these problems, assume that this distribution is perfectly known as the following (ignoring any estimation error or uncertainty):
+
+ \t       | $C = 0$ | $C = 1$
+--------- | ------- | -----------
+$A = 0$   | 0.10    | 0.30
+$A = 1$   | 0.12    | 0.48
+
+1. Calculate the marginal probabilities of saying 'a' $p(A = 1)$ and of saying 'couch' $p(C = 1)$.
+
+2. Calculate the conditional probability of saying 'a' given that the noun is 'couch' $p(A = 1 | C = 1)$.
+
+3. Does noun familiarity affect determiner use, i.e., are $A$ and $C$ independent? Why or why not?
+
+4. *Chain rule.* Decompose the joint distribution $p(W, X, Y, Z)$ into four component probabilities using the chain rule. (Any factorization into four probabilities is fine.)
+
+*Inference in a simple generative model.* For problems 5--8, imagine that a researcher is investigating what affects a speaker's choice to use the complementizer 'that', for example "He said he left." versus "He said that he left.", which mean basically the same thing. In particular, they are investigating how this relates to the first noun phrase in the relative clause, which might be a pronoun 'He said he left.', a proper name 'He said Herman left.', or a full noun phrase 'He said the strange man left.' Imagine a simple two-variable graphical model that represents the generative process in which a speaker first chooses the type of noun phrase to use $N$, which can take values 'pronoun', 'name', or 'full', and then conditional on $N$, determines the complementizer $C$, which can take values of 'that' or 'null'.
+
+The distribution represented by this model is completely specified by the marginal distribution on $N$ 
+
+$p(N =\mbox{pronoun}) = 0.6$  
+$p(N =\mbox{name}) = 0.3$  
+$p(N =\mbox{full}) = 0.1$  
+
+and the conditional distributions on $C$ given $N$
+
+$p(C = \mbox{that}\ |\ N =\mbox{pronoun}) = 0.2$  
+$p(C = \mbox{that}\ |\ N =\mbox{name}) = 0.4$  
+$p(C = \mbox{that}\ |\ N =\mbox{full}) = 0.7$  
+
+5. Calculate the probability, without having observed anything, that a speaker will choose to use a non-pronominal noun phrase (either a name or full).
+
+6. Calculate the probability, without having observed anything, that a speaker will use an overt complementizer 'that' $p(C = \mbox{that})$.
+
+7. Calculate the probability, knowing in advance that a speaker is going to use a pronoun, that they will use a null complementizer $p(C = \mbox{null}\ |\ N =\mbox{pronoun})$.
+
+8. Calculate the probability, knowing in advance that a speaker is going to use a null complementizer, that they will use a pronoun $p(N =\mbox{pronoun}\ |\ C = \mbox{null})$.
+
+Visualization, functions, and conjugate Bayes in R
+--------------------------------------------------
+
+[Watch this space]
