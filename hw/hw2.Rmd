@@ -82,4 +82,24 @@ Visualization, functions, and conjugate Bayes in R
 
 12. *Calculating posterior betas.* Create a function `beta_posterior()` that takes as its first two arguments the number of successes `successes` and the number of failures `failures` that have been observed, and its second two arguments the `alpha` and `beta` parameters of a prior Beta distribution on $\pi$, and returns a two-element vector that represents the $\alpha$ and $\beta$ parameters of a posterior distribution on $\pi$. Use default arguments of 1 for the prior parameters `alpha` and `beta`, and make sure your function works whether or not you specify them. As always, first check your assumptions about the input, ensuring that `alpha` and `beta` are positive, and that `successes` and `failures` are non-negative.
 
-13. *Putting it all together: plotting Beta binomial posteriors.* [Watch this space]
+13. *Putting it all together: plotting Beta binomial posteriors.* [Counts double for grading purposes.] At this point, you have a function that can calculate the posterior Beta distribution on $\pi$ given a prior Beta distribution and some observations, and you have two functions that can summarize a Beta distribution by calculating its mean and central probability intervals. Now, you'll put them together to create a function `beta_posterior_summary()` that takes as input (1) a single binary numeric vector of 0s and 1s `x` that represent a series of observations, (2--3) the parameters `alpha` and `beta` of a prior Beta distribution on $\pi$ (both defaulting to 1), and (4) the `size` of a desired central probability interval (defaulting to 0.9), and outputs the mean and relevant central probability interval of a posterior Beta distribution on $\pi$.
+
+    The basic plan for your function should be:
+        
+    a. compute `successes` and `failures` from `x`
+    b. call `beta_posterior` to get the parameters of the posterior Beta
+    c. call `beta_mean` to get the mean of the posterior distribution
+    d. call `beta_central_interval` to get the central interval of the posterior distribution
+    e. convert the mean and central interval into the right format to return
+    
+    Here is some more information about each step:
+    
+    a. To compute the number of successes from the binary numeric vector `x`, note that `sum(x)` will return the sum of all elements in `x`, and `length(x)` will return the total number of elements in `x`.
+    b. When calling `beta_posterior()`, you will of course need to use the `successes` and `failures` variables you just computed in (a), but don't forget to also specify the prior distribution parameters that `beta_posterior_summary()` was called with.
+    c. To call `beta_mean()`, you'll need to pass it the new `alpha` and `beta` parameters that were returned by `beta_posterior()` in (b). Since `beta_posterior()` returns the two parameters just as the elements of a two-dimensional vector, you'll need to extract the new `alpha` and `beta` from this vector. Remember that you can use index notation in square brackets to extract elements from vectors, e.g., `x[1]` is the first element of the vector `x`.
+    d. When calling `beta_central_interval()`, don't forget to pass along the `size` parameter specified to `beta_posterior_summary()`.
+    e. Because we're going to use this function with `ggplot2` in problem 15, its output needs to be in a particular format. Specifically, you should return a one-row data frame with three columns: column `y` should be the posterior mean, column `ymin` should be the lower bound of the central posterior probability interval, and column `ymax` should be the upper bound of the central posterior probability interval. As a reminder example, you can create a data frame with two columns `a` and `b` that are initialized to the vectors `y` and `z` respectively by `data.frame(a = y, b = z)`.
+    
+    Finally, a note about checking the input variables. As I've said in class, it's always a good habit in a function to first quickly check the input variables to ensure these match your assumptions. In this case, the function `beta_posterior_summary()` is immediately calling functions that check all four of its arguments, so you can defer the variable checking to those functions.
+    
+14. [Watch this space.]
