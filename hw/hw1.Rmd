@@ -1,6 +1,6 @@
 ---
 title: 'Ling 300: Homework 1'
-author: "Klinton Bicknell"
+author: 'Instructor: Klinton Bicknell'
 date: "Due: January 22, 2015"
 output: html_document
 ---
