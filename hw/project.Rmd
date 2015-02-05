@@ -1,0 +1,39 @@
+---
+title: 'Ling 300: Final project'
+author: 'Instructor: Klinton Bicknell'
+date: "Proposal due February 13, 2015; Paper due March 16, 2015"
+output: html_document
+---
+
+The final project consists of two parts described below: an initial proposal and a final report. Generally, I recommend working on final projects in pairs, but working individually is also fine. These projects should be substantially larger in scope than one of regular homeworks. There are two types of final projects.
+
+
+Two types of projects
+---------------------
+
+### Option 1: In-depth statistical analysis ###
+
+Under this options, students will apply techniques from this class to perform a set of Bayesian analyses of some dataset from outside class. Although Bayesian techniques can be used to essentially reproduce common frequentist analyses (like ANOVA and regression), remember that Bayesian techniques can also be used to ask questions that common frequentist analyses don't probe (especially in cases in which there is reason to suppose a complex generative model of the data, such as a scientific theory).
+
+
+### Option 2: A Bayesian model of an inference problem facing some agent ###
+
+Humans (and other agents) face probabilistic inference problems all the time. To give just two examples: in language processing, we infer the sound category from a variable acoustic token and infer the syntactic structure of a sentence from the incomplete sequence of words we've seen so far. In language acquisition, we infer the sound categories in our language, the words in our language, the syntactic structure of our language, etc., from noisy and incomplete information. Under this option, students will design and implement a Bayesian model of a probabilistic inference problem facing some agent (for example, an aspect of language processing or acquisition) and then use techniques from the class to determine some of the model's predictions.
+
+
+Initial proposal
+----------------
+
+Students will write a proposal (of about a page in length) that describes in detail the planned final project. Identical copies of these proposals should be submitted on canvas by each member of the team. Of course, proposals should make it clear who is on the team. I will give feedback about the proposals, which students should take into account before undertaking the project.
+
+
+Final report
+------------
+
+Final reports should include two parts: (1) a paper (submitted as a pdf) describing the details of what you did, why you did it, what the results showed, and what they mean and (2) your R code (submitted as a separate .R file, or possibly multiple .R files). The reports should be about 5--10 pages in length, _single spaced_. Ensure that your write-up is very clear about:
+
+* your model: what are all the variables, which are known, what is the generative process, what distributions are you assuming for each variable
+* the design decisions underlying your model: why did you set up your model the way you did? would any other ways have been reasonable?
+* your inference method: the details of how you performed inference (_e.g._, MCMC via JAGS with 5 chains initialized to ... for 10,000 iterations of burn-in and another 10,000 iterations of sampling)
+* if you used an MCMC method, how you assessed convergence
+* the limitations of your approach
