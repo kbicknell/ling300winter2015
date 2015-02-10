@@ -49,3 +49,4 @@ To start analyzing our beliefs about $\pi$, we'll use a very simple model, much 
     
 ### Part 2: more complex analysis of posterior ###
     
+    [TBA]
