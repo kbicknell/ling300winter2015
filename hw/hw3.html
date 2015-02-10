@@ -72,8 +72,6 @@ img {
 <h2>Bayesian inference with JAGS</h2>
 <p>For this assignment, we’ll make use of a dataset of lexical decision responses. As you may be aware, lexical decision is a task in which participants see a string of characters such as ‘flutter’ or ‘blutcher’ and have to rapidly push a button indicating whether it is a real word or not. Your dataset is the set of responses (‘word’ or ‘nonword’) made to actual words by 17 participants and is available as <code>bicknell_et_al_2010_lexdec_ling300.csv</code> <a href="bicknell_et_al_2010_lexdec_ling300.csv">download here</a>.</p>
 <p>In particular, we’re interested in using the binary answers (correct / incorrect) to make inferences about the probability of getting a trial correct in this task, which we’ll call <span class="math">\(\pi\)</span>. (Remember that ‘correct’ means responding ‘word’, since this dataset is all actual words.) We’ll use two different Bayesian methods to estimate the posterior distribution on <span class="math">\(\pi\)</span>. Note that by itself, of course, this probability isn’t very interesting. However, these models are a simpler piece of an interesting analysis that examining whether <span class="math">\(\pi\)</span> differs across conditions (for example, following related or unrelated prime words).</p>
-<div id="part-1-simple-analysis-of-posterior" class="section level3">
-<h3>Part 1: simple analysis of posterior</h3>
 <ol style="list-style-type: decimal">
 <li><p>First steps:</p>
 <ul>
@@ -82,6 +80,8 @@ img {
 <li>Note that the second variable is factor with two levels ‘word’ and ‘nonword’. For the use of this variable with JAGS, it would be more convenient if it was a numeric vector, where a value of 1 indicates correct and 0 indicates incorrect. Using the <code>dplyr</code> package, add a column to this data frame called <code>correct</code> that has this property.</li>
 </ul></li>
 </ol>
+<div id="part-1-simple-analysis-of-posterior" class="section level3">
+<h3>Part 1: simple analysis of posterior</h3>
 <p>To start analyzing our beliefs about <span class="math">\(\pi\)</span>, we’ll use a very simple model, much like the one we discussed in class, and then perform inference with JAGS.</p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>To get a sense of the overall data, plot a 95% bootstrapped confidence interval on the overall probability of responding correct. Since this is a single overall probability, not split by condition, the simplest way to get <code>ggplot</code> to do this is to specify a constant number for the x-axis aesthetic, e.g., <code>aes(1, correct)</code>. To get this type of interval out of <code>stat_summary</code>, use <code>mean_cl_boot</code> for the <code>fun.dat</code> argument instead of <code>mean_se</code> that you were using in the previous assignment. (Note that bootstrapped confidence intervals such as these are usually much better behaved for parameters bounded between 0 and 1 than the more common standard-error-based intervals.) <strong>Questions:</strong> What are the endpoints of that interval? How much uncertainty does this (frequentist) analysis reveal about the probability of getting a trial correct (i.e., about how wide is the interval)?</p></li>
