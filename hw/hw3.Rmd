@@ -20,7 +20,7 @@ In particular, we're interested in using the binary answers (correct / incorrect
     * Load the data from the file to a data frame called `dat`. (Do not use `file.choose()`.)
     * Note that the second variable is factor with two levels 'word' and 'nonword'. For the use of this variable with JAGS, it would be more convenient if it was a numeric vector, where a value of 1 indicates correct and 0 indicates incorrect. Using the `dplyr` package, add a column to this data frame called `correct` that has this property.
     
-### Part 1: simple analysis of posterior ###
+### Part 1: simple model ###
 To start analyzing our beliefs about $\pi$, we'll use a very simple model, much like the one we discussed in class, and then perform inference with JAGS.
 
 2. To get a sense of the overall data, plot a 95% bootstrapped confidence interval on the overall probability of responding correct. Since this is a single overall probability, not split by condition, the simplest way to get `ggplot` to do this is to specify a constant number for the x-axis aesthetic, e.g., `aes(1, correct)`. To get this type of interval out of `stat_summary`, use `mean_cl_boot` for the `fun.dat` argument instead of `mean_se` that you were using in the previous assignment. (Note that bootstrapped confidence intervals such as these are usually much better behaved for parameters bounded between 0 and 1 than the more common standard-error-based intervals.) __Questions:__ What are the endpoints of that interval? How much uncertainty does this (frequentist) analysis reveal about the probability of getting a trial correct (i.e., about how wide is the interval)?
@@ -46,6 +46,34 @@ To start analyzing our beliefs about $\pi$, we'll use a very simple model, much 
     * Estimate the bounds of the 95% central interval of the posterior by taking the 0.025 and 0.975 quantiles of these samples. You can do this using the `quantile()` function.
     * __Questions:__ What are the estimated posterior mean and 95% central interval? Exactly how wide is that interval estimated to be? How well do these numbers agree with the mean and bounds that you plotted with bootstrap methods above?
     
-### Part 2: more complex analysis of posterior ###
+### Part 2: hierarchical model ###
     
-    [TBA]
+The generative model used in part 1 made the assumption that the `correct` responses were all independently generated. Because these data were produced by 17 participants, that isn't a good assumption. For example, one participant's overall probability of answering correct is likely to be different than another participant's. In this part, you'll extend the model from part 1 into one that doesn't make this incorrect assumption.
+
+12. To see the extent to which this is the case in the data, first plot bootstrapped confidence intervals on each participant's probability of answering a trial correctly. This should be as simple as swapping out the constant x-axis from your plot above into using `participant` for the x-axis. __Question:__ How much do the individual participants' probabilities of answering correct seem to differ from each other?
+
+13. In order to provide the model with information that each participant has their own probability of answering correctly $pi_i$, you'll create a hierarchical model. The first step of creating this model is to create a variable called `model_string_hier` that describes this model in JAGS. The model should specify that:
+    * `pi_overall` $\sim \mbox{Beta}(1,1)$
+    * $k \sim \mbox{Uniform}(0, 1000)$
+    * for each participant $i$ from 1 to `num_subj`: `pi[i]` $\sim \mbox{Beta}(k\pi, k(1-\pi))$, 
+    * for `i` from 1 to `length(correct)`: `correct[i] ~ dbern(pi_subjs[participant[i]])` 
+
+14. The next step is to set variables for the number of samples to keep to 100, the number of samples to toss to be equal to the number of samples to keep, and the number of chains to 2. Additionally, create a new variable `num_ppts`, which is equal to 17.
+
+15. Create variables that will be used to initialize the two chains to relatively disparate parts of the parameter space. Make sure to initialize all of the variables, and to set the random number generators and seeds to ensure reproducibility. Note that `pi` should be initialized to a vector of length `num_ppts`.
+
+16. Initialize your JAGS model, using the model string, initialization values, and number of chains you've defined. You should also link the `correct` and `participant` variables in your JAGS model to the those in your data frame, and the `num_ppts` variable in your JAGS model to the variable in R.
+
+17. Run burn-in and obtain your samples, ensuring to keep all three unknown variables as part of your samples.
+
+18. Check whether your model appears to have converged. __Questions:__ Are all $\hat{R} Upper C.I. values already below 1.05? If not, double the number of samples (ensuring that burn-in is also doubled) and repeat until all values are below 1.05. How many samples did it require?
+
+19. Now that you have some basis for believing that your model has converged, the next thing to check is whether our upper bound on the prior for `k` (of 1000) influenced our posterior distribution at all. To do this, first convert your samples object into a data frame (as described above). Now, you can use the `max()` function to find the maximum of the `k` column of this dataframe to see the largest sample of `k`. __Questions:__ What is this value? Is it safe to assume that our upper bound of 1000 was not influencing the random walk?
+
+20. As another diagnostic, use the `effectiveSize()` function on your mcmc object to determine the approximate number of effectively independent samples your chain contains for each variable. __Questions:__ Which two variables are mixing the slowest? What are their efficiencies? (i.e., the ratio of effective samples to actual iterates) Now use effectiveSize on part 1's simple model's mcmc object as well. __Question:__ What is the efficiency of `pi` there?
+
+21. Say our goal is to estimate a 95% central probability interval for `pi` (in part 1) and `pi_overall` (in part 2), and say that to estimate a good interval, we want to have 100 independent samples in each tail. __Questions:__ How many independent samples of the whole distribution would we need to obtain in order to have 100 in each tail? Given the efficiencies of `pi` (in part 1) and `pi_overall` (in part 2), how many actual samples should we obtain about each of them in order to get about that number of independent samples?
+
+22. Change the number of samples for the simple and hierarchical models now to get as many as determined in problem 21, and confirm that `effectiveSize()` now shows at least the appropriate number of effective samples for having 100 in each tail. If it does not, increase the number of samples again. __Questions:__ How many samples did it end up taking to get the appropriate number of effectively independent samples in each model? What has happened to the $\hat{R}$ values in these models?
+
+23. Now, with these final sets of samples, estimate the means and 95% central intervals of the posterior in each model. Using the bounds, calculate the width of the two posterior intervals. __Questions:__ Which model has a broader posterior distribution? Why would this be the case?

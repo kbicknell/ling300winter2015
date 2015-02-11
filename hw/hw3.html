@@ -80,8 +80,8 @@ img {
 <li>Note that the second variable is factor with two levels ‘word’ and ‘nonword’. For the use of this variable with JAGS, it would be more convenient if it was a numeric vector, where a value of 1 indicates correct and 0 indicates incorrect. Using the <code>dplyr</code> package, add a column to this data frame called <code>correct</code> that has this property.</li>
 </ul></li>
 </ol>
-<div id="part-1-simple-analysis-of-posterior" class="section level3">
-<h3>Part 1: simple analysis of posterior</h3>
+<div id="part-1-simple-model" class="section level3">
+<h3>Part 1: simple model</h3>
 <p>To start analyzing our beliefs about <span class="math">\(\pi\)</span>, we’ll use a very simple model, much like the one we discussed in class, and then perform inference with JAGS.</p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>To get a sense of the overall data, plot a 95% bootstrapped confidence interval on the overall probability of responding correct. Since this is a single overall probability, not split by condition, the simplest way to get <code>ggplot</code> to do this is to specify a constant number for the x-axis aesthetic, e.g., <code>aes(1, correct)</code>. To get this type of interval out of <code>stat_summary</code>, use <code>mean_cl_boot</code> for the <code>fun.dat</code> argument instead of <code>mean_se</code> that you were using in the previous assignment. (Note that bootstrapped confidence intervals such as these are usually much better behaved for parameters bounded between 0 and 1 than the more common standard-error-based intervals.) <strong>Questions:</strong> What are the endpoints of that interval? How much uncertainty does this (frequentist) analysis reveal about the probability of getting a trial correct (i.e., about how wide is the interval)?</p></li>
@@ -101,9 +101,29 @@ img {
 </ul></li>
 </ol>
 </div>
-<div id="part-2-more-complex-analysis-of-posterior" class="section level3">
-<h3>Part 2: more complex analysis of posterior</h3>
-<pre><code>[TBA]</code></pre>
+<div id="part-2-hierarchical-model" class="section level3">
+<h3>Part 2: hierarchical model</h3>
+<p>The generative model used in part 1 made the assumption that the <code>correct</code> responses were all independently generated. Because these data were produced by 17 participants, that isn’t a good assumption. For example, one participant’s overall probability of answering correct is likely to be different than another participant’s. In this part, you’ll extend the model from part 1 into one that doesn’t make this incorrect assumption.</p>
+<ol start="12" style="list-style-type: decimal">
+<li><p>To see the extent to which this is the case in the data, first plot bootstrapped confidence intervals on each participant’s probability of answering a trial correctly. This should be as simple as swapping out the constant x-axis from your plot above into using <code>participant</code> for the x-axis. <strong>Question:</strong> How much do the individual participants’ probabilities of answering correct seem to differ from each other?</p></li>
+<li>In order to provide the model with information that each participant has their own probability of answering correctly <span class="math">\(pi_i\)</span>, you’ll create a hierarchical model. The first step of creating this model is to create a variable called <code>model_string_hier</code> that describes this model in JAGS. The model should specify that:
+<ul>
+<li><code>pi_overall</code> <span class="math">\(\sim \mbox{Beta}(1,1)\)</span></li>
+<li><span class="math">\(k \sim \mbox{Uniform}(0, 1000)\)</span></li>
+<li>for each participant <span class="math">\(i\)</span> from 1 to <code>num_subj</code>: <code>pi[i]</code> <span class="math">\(\sim \mbox{Beta}(k\pi, k(1-\pi))\)</span>,</li>
+<li>for <code>i</code> from 1 to <code>length(correct)</code>: <code>correct[i] ~ dbern(pi_subjs[participant[i]])</code></li>
+</ul></li>
+<li><p>The next step is to set variables for the number of samples to keep to 100, the number of samples to toss to be equal to the number of samples to keep, and the number of chains to 2. Additionally, create a new variable <code>num_ppts</code>, which is equal to 17.</p></li>
+<li><p>Create variables that will be used to initialize the two chains to relatively disparate parts of the parameter space. Make sure to initialize all of the variables, and to set the random number generators and seeds to ensure reproducibility. Note that <code>pi</code> should be initialized to a vector of length <code>num_ppts</code>.</p></li>
+<li><p>Initialize your JAGS model, using the model string, initialization values, and number of chains you’ve defined. You should also link the <code>correct</code> and <code>participant</code> variables in your JAGS model to the those in your data frame, and the <code>num_ppts</code> variable in your JAGS model to the variable in R.</p></li>
+<li><p>Run burn-in and obtain your samples, ensuring to keep all three unknown variables as part of your samples.</p></li>
+<li><p>Check whether your model appears to have converged. <strong>Questions:</strong> Are all $ Upper C.I. values already below 1.05? If not, double the number of samples (ensuring that burn-in is also doubled) and repeat until all values are below 1.05. How many samples did it require?</p></li>
+<li><p>Now that you have some basis for believing that your model has converged, the next thing to check is whether our upper bound on the prior for <code>k</code> (of 1000) influenced our posterior distribution at all. To do this, first convert your samples object into a data frame (as described above). Now, you can use the <code>max()</code> function to find the maximum of the <code>k</code> column of this dataframe to see the largest sample of <code>k</code>. <strong>Questions:</strong> What is this value? Is it safe to assume that our upper bound of 1000 was not influencing the random walk?</p></li>
+<li><p>As another diagnostic, use the <code>effectiveSize()</code> function on your mcmc object to determine the approximate number of effectively independent samples your chain contains for each variable. <strong>Questions:</strong> Which two variables are mixing the slowest? What are their efficiencies? (i.e., the ratio of effective samples to actual iterates) Now use effectiveSize on part 1’s simple model’s mcmc object as well. <strong>Question:</strong> What is the efficiency of <code>pi</code> there?</p></li>
+<li><p>Say our goal is to estimate a 95% central probability interval for <code>pi</code> (in part 1) and <code>pi_overall</code> (in part 2), and say that to estimate a good interval, we want to have 100 independent samples in each tail. <strong>Questions:</strong> How many independent samples of the whole distribution would we need to obtain in order to have 100 in each tail? Given the efficiencies of <code>pi</code> (in part 1) and <code>pi_overall</code> (in part 2), how many actual samples should we obtain about each of them in order to get about that number of independent samples?</p></li>
+<li><p>Change the number of samples for the simple and hierarchical models now to get as many as determined in problem 21, and confirm that <code>effectiveSize()</code> now shows at least the appropriate number of effective samples for having 100 in each tail. If it does not, increase the number of samples again. <strong>Questions:</strong> How many samples did it end up taking to get the appropriate number of effectively independent samples in each model? What has happened to the <span class="math">\(\hat{R}\)</span> values in these models?</p></li>
+<li><p>Now, with these final sets of samples, estimate the means and 95% central intervals of the posterior in each model. Using the bounds, calculate the width of the two posterior intervals. <strong>Questions:</strong> Which model has a broader posterior distribution? Why would this be the case?</p></li>
+</ol>
 </div>
 </div>
 
