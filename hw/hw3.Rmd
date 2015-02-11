@@ -66,7 +66,7 @@ The generative model used in part 1 made the assumption that the `correct` respo
 
 17. Run burn-in and obtain your samples, ensuring to keep all three unknown variables as part of your samples.
 
-18. Check whether your model appears to have converged. __Questions:__ Are all $\hat{R} Upper C.I. values already below 1.05? If not, double the number of samples (ensuring that burn-in is also doubled) and repeat until all values are below 1.05. How many samples did it require?
+18. Check whether your model appears to have converged. __Questions:__ Are all $\hat{R}$ Upper C.I. values already below 1.05? If not, double the number of samples (ensuring that burn-in is also doubled) and repeat until all values are below 1.05. How many samples did it require?
 
 19. Now that you have some basis for believing that your model has converged, the next thing to check is whether our upper bound on the prior for `k` (of 1000) influenced our posterior distribution at all. To do this, first convert your samples object into a data frame (as described above). Now, you can use the `max()` function to find the maximum of the `k` column of this dataframe to see the largest sample of `k`. __Questions:__ What is this value? Is it safe to assume that our upper bound of 1000 was not influencing the random walk?
 
