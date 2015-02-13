@@ -111,7 +111,7 @@ img {
 <li><code>pi_overall</code> <span class="math">\(\sim \mbox{Beta}(1,1)\)</span></li>
 <li><span class="math">\(k \sim \mbox{Uniform}(0, 1000)\)</span></li>
 <li>for each participant <span class="math">\(i\)</span> from 1 to <code>num_subj</code>: <code>pi[i]</code> <span class="math">\(\sim \mbox{Beta}(k\pi, k(1-\pi))\)</span>,</li>
-<li>for <code>i</code> from 1 to <code>length(correct)</code>: <code>correct[i] ~ dbern(pi_subjs[participant[i]])</code></li>
+<li>for <code>i</code> from 1 to <code>length(correct)</code>: <code>correct[i] ~ dbern(pi[participant[i]])</code></li>
 </ul></li>
 <li><p>The next step is to set variables for the number of samples to keep to 100, the number of samples to toss to be equal to the number of samples to keep, and the number of chains to 2. Additionally, create a new variable <code>num_ppts</code>, which is equal to 17.</p></li>
 <li><p>Create variables that will be used to initialize the two chains to relatively disparate parts of the parameter space. Make sure to initialize all of the variables, and to set the random number generators and seeds to ensure reproducibility. Note that <code>pi</code> should be initialized to a vector of length <code>num_ppts</code>.</p></li>

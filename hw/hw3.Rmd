@@ -56,7 +56,7 @@ The generative model used in part 1 made the assumption that the `correct` respo
     * `pi_overall` $\sim \mbox{Beta}(1,1)$
     * $k \sim \mbox{Uniform}(0, 1000)$
     * for each participant $i$ from 1 to `num_subj`: `pi[i]` $\sim \mbox{Beta}(k\pi, k(1-\pi))$, 
-    * for `i` from 1 to `length(correct)`: `correct[i] ~ dbern(pi_subjs[participant[i]])` 
+    * for `i` from 1 to `length(correct)`: `correct[i] ~ dbern(pi[participant[i]])` 
 
 14. The next step is to set variables for the number of samples to keep to 100, the number of samples to toss to be equal to the number of samples to keep, and the number of chains to 2. Additionally, create a new variable `num_ppts`, which is equal to 17.
 
