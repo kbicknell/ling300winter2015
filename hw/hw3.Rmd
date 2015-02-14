@@ -55,7 +55,7 @@ The generative model used in part 1 made the assumption that the `correct` respo
 13. In order to provide the model with information that each participant has their own probability of answering correctly $pi_i$, you'll create a hierarchical model. The first step of creating this model is to create a variable called `model_string_hier` that describes this model in JAGS. The model should specify that:
     * `pi_overall` $\sim \mbox{Beta}(1,1)$
     * $k \sim \mbox{Uniform}(0, 1000)$
-    * for each participant $i$ from 1 to `num_subj`: `pi[i]` $\sim \mbox{Beta}(k\pi, k(1-\pi))$, 
+    * for each participant $i$ from 1 to `num_ppts`: `pi[i]` $\sim \mbox{Beta}(k\pi, k(1-\pi))$,
     * for `i` from 1 to `length(correct)`: `correct[i] ~ dbern(pi[participant[i]])` 
 
 14. The next step is to set variables for the number of samples to keep to 100, the number of samples to toss to be equal to the number of samples to keep, and the number of chains to 2. Additionally, create a new variable `num_ppts`, which is equal to 17.
