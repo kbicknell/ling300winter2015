@@ -1,0 +1,34 @@
+---
+title: 'Ling 300: Homework 4'
+author: "Instructor: Klinton Bicknell"
+date: "Due: March 5, 2015"
+output: html_document
+---
+
+In this assignment, you'll be building and evaluating two mixed-effects regression models with MCMC in JAGS. The primary object of interest will be the effect of word frequency on two measures from a lexical decision task: (1) reaction times and (2) accuracy. The first model will assume that (log) reaction times are normally distributed (i.e., linear regression) and the second model will assume that whether or not a trial is correct is distributed according to a Bernoulli distribution and that the regression model is in log-odds space (i.e., logistic regression). Both models should assume random intercepts for each subject and for each word and also random slopes of frequency for each subject. (Random slopes of frequency for each word would not make sense, since a given word cannot vary in frequency.) The main goal is to use 95% central posterior intervals to describe the likely size of the effects of frequency on RTs and on responding correctly.
+
+**You'll turn in both your R script (that I can run) and a pdf write-up.**
+
+Further details
+---------------
+
+* You will analyze the `lexdec` dataset from the `languageR` package that we've been using in class. The dependent measures will be the `RT` column (which is already log-transformed) and (an appropriately transformed version of) the Correct column, your independent measure will be (a centered version of) the Frequency column, and the relevant grouping variables for the random effects are the Subject and Word columns.
+
+* You should use as many iterations of MCMC as necessary to ensure that R-hats for all unknown variables (including the multivariate R-hat) are below 1.05, but use a minimum of at least 1000 iterations. Because 1000 iterations of MCMC could take a while (up to 15 minutes or so) in a complex model like this, you'll probably want to use a smaller number of iterations while developing your code.
+
+* For each model, you should use four chains, and ensure that you initialize every unknown variable in the chains, the chains' random seeds, and the R random seed, to ensure reproducibility.
+
+* JAGS will do some tricks to speed up sampling in regression models if you run the command `load.module("glm")` at some point in your code before you call `jags.model()`. For these models to converge in a reasonable amount of time, these tricks are essential.
+
+* Also, sampling will be much more efficient if you use a Normal distribution prior on $\beta_0$ and $\beta_1$ (instead of uniform priors). If you use a very low precision, say, 0.0000001, these priors will be essentially uninformative. This is also highly recommended.
+
+Write-up
+--------
+
+For this assignment, instead of answering specific questions, you'll be producing a coherent write-up describing what you did, the results you found, and what they mean. Your write-up should be divided into two main parts: the first part for the RT model and the second part for the Correct model. Each of these two parts should contain the following three sections (with section headings):
+
+1. _Model specification._ Here, describe the probabilistic model you did inference with, assuming that the reader has _not_ read these homework instructions. You can assume the reader is familiar with mixed-effects regression, but you must explain all design decisions (such as what your independent variables and dependent variables were, how you transformed your variables, which random effects you included, and what priors you used).
+
+2. _Inference and diagnostics._ Here, describe how many chains and iterations of MCMC you used, why you think the model has converged, how we know that the boundaries of any uniform priors you used weren't relevant to the posterior, and what the effective samples sizes are for each of your unknown model parameters.
+
+3. _Results and discussion._ Give the central 95% posterior intervals for the two regression coefficients ($\beta_0$ and $\beta_1$) and describe precisely what they both mean (e.g., for a slope, for each [unit] increase in [X], there is an [increase/decrease] of [Z]  [units] in [Y]).
