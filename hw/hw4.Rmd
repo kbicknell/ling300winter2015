@@ -12,7 +12,7 @@ In this assignment, you'll be building and evaluating two mixed-effects regressi
 Further details
 ---------------
 
-* You will analyze the `lexdec` dataset from the `languageR` package that we've been using in class. The dependent measures will be the `RT` column (which is already log-transformed) and (an appropriately transformed version of) the Correct column, your independent measure will be (a centered version of) the Frequency column, and the relevant grouping variables for the random effects are the Subject and Word columns.
+* You will analyze the `lexdec` dataset from the `languageR` package that we've been using in class. The dependent measures will be the `RT` column (which is the natural log of the number of milliseconds) and (an appropriately transformed version of) the Correct column, your independent measure will be (a centered version of) the Frequency column (which is the natural log of the word's number of occurrences in the CELEX corpus), and the relevant grouping variables for the random effects are the Subject and Word columns.
 
 * You should use as many iterations of MCMC as necessary to ensure that R-hats for all unknown variables (including the multivariate R-hat) are below 1.05, but use a minimum of at least 1000 iterations. Because 1000 iterations of MCMC could take a while (up to 15 minutes or so) in a complex model like this, you'll probably want to use a smaller number of iterations while developing your code.
 
