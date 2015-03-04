@@ -31,4 +31,4 @@ For this assignment, instead of answering specific questions, you'll be producin
 
 2. _Inference and diagnostics._ Here, describe how many chains and iterations of MCMC you used, why you think the model has converged, how we know that the boundaries of any uniform priors you used weren't relevant to the posterior, and what the effective samples sizes are for each of your unknown model parameters.
 
-3. _Results and discussion._ Give the central 95% posterior intervals for the two regression coefficients ($\beta_0$ and $\beta_1$) and describe precisely what they both mean (e.g., for a slope, for each [unit] increase in [X], there is an [increase/decrease] of [Z]  [units] in [Y]).
+3. _Results and discussion._ Give the central 95% posterior intervals for the two regression coefficients ($\beta_0$ and $\beta_1$) and describe precisely what they both mean (e.g., for a slope, for each [unit] increase in [X], there is an [increase/decrease] of [Z]  [units] in [Y]). For interpreting intercepts, note that the `plogis()` function in R will convert a log-odds value back to a probability.
